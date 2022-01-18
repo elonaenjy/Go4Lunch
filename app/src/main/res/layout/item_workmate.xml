@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/item_workmates_picture"
+        android:layout_width="@dimen/picture_restaurant"
+        android:layout_height="@dimen/picture_restaurant"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="@dimen/restaurant_horizontal_margin"
+        android:layout_marginEnd="@dimen/restaurant_horizontal_margin"
+        android:layout_marginBottom="@dimen/restaurant_vertical_margin"
+        android:contentDescription="@string/workmate_picture"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_baseline_person_outline_24" />
+
+    <TextView
+        android:id="@+id/item_workmates_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:scrollHorizontally="true"
+        android:text="@string/text_workmate"
+        android:textColor="@color/colorText"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/item_workmates_picture"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_workmates_restaurant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="10dp"
+        android:lineSpacingMultiplier="1.2"
+        android:maxLines="2"
+        android:text="@string/item_workmates_restaurant_text_null"
+        android:textColor="@color/colorText"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/item_workmates_picture"
+        app:layout_constraintTop_toBottomOf="@id/item_workmates_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

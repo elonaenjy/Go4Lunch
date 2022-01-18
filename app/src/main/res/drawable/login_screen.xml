@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
+
+<!-- The background image for Start Screen -->
+<item android:drawable="@drawable/resto_portrait_login"/>
+</layer-list>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--Picture of the restaurant-->
+    <ImageView
+        android:id="@+id/restaurant_details_picture"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/restaurant_details_picture_height"
+        android:contentDescription="@string/restaurant_details_picture_description"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[2]" />
+
+
+    <!--  Description details of the restaurant  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/restaurant_details_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/restaurant_details_picture">
+
+        <TextView
+            android:id="@+id/restaurant_details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/restaurant_details_cardview"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Restaurant_name" />
+
+        <ImageView
+            android:id="@+id/restaurant_details_star1"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="80dp"
+            android:contentDescription="@string/restaurant_details_star1_description"
+            android:src="@drawable/ic_baseline_star_24"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/quantum_yellow" />
+
+        <ImageView
+            android:id="@+id/restaurant_details_star2"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="100dp"
+            android:contentDescription="@string/restaurant_details_star2_description"
+            android:src="@drawable/ic_baseline_star_24"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/quantum_yellow" />
+
+        <ImageView
+            android:id="@+id/restaurant_details_star3"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="120dp"
+            android:contentDescription="@string/restaurant_details_star3_description"
+            android:src="@drawable/ic_baseline_star_24"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/quantum_yellow" />
+
+        <TextView
+            android:id="@+id/restaurant_details_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/background_light"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@id/restaurant_details_cardview"
+            app:layout_constraintTop_toBottomOf="@id/restaurant_details_name"
+            tools:text="Restaurant_address" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--  Description details of the restaurant  -->
+    <LinearLayout
+        android:id="@+id/restaurant_details_buttonbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/restaurant_details_cardview">
+
+
+        <Button
+            android:id="@+id/restaurant_details_phone_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableTop="@drawable/ic_baseline_phone_24"
+            android:textColor="@color/colorPrimary"
+            tools:text="CALL" />
+
+        <Button
+            android:id="@+id/restaurant_details_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableTop="@drawable/ic_baseline_star_border_24"
+            android:textColor="@color/colorPrimary"
+            tools:text="LIKE" />
+
+        <Button
+            android:id="@+id/restaurant_details_website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableTop="@drawable/ic_baseline_website_24"
+            android:textColor="@color/colorPrimary"
+            tools:text="WEBSITE" />
+
+    </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/fragment_restaurant_details_button_restaurant_choice"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/button_add_restaurant_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/restaurant_details_cardview"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/fragment_restaurant_details_button_restaurant_choice_description" />
+
+    <ImageButton
+        android:id="@+id/fragment_restaurant_details_button_backpress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@null"
+        android:contentDescription="@string/fragment_restaurant_details_button_backpress_description"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/restaurant_details_no_picture_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:textSize="30sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="No Picture" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/restaurant_details_buttonbar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/restaurant_details_workmates_recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_workmate" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

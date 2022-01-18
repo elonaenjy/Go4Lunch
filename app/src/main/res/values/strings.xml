@@ -1,0 +1,140 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="appName">Go4Lunch</string>
+    <string name="facebook_application_id" translatable="false">1189342811477033</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb1189342811477033</string>
+    <!-- MAIN ACTIVITY -->
+    <string name="title_mapview">Map View</string>
+    <string name="title_listview">List View</string>
+    <string name="title_workmates">Workmates availables</string>
+    <string name="input_your_place">Find a restaurant</string>
+
+    <!-- Main Activity - Drawer-->
+    <string name="main_activity_lunch_no_restaurant_chosen">You haven\'t choosen yet a restaurant yet</string>
+
+    <!-- LOGIN ACTIVITY -->
+    <string name="toolbar_title_login_activity">Your profile</string>
+    <string name="text_input_username">User name</string>
+    <string name="text_view_email">email :</string>
+    <string name="button_update_account" translatable="false">Mettre à jour le nom d\'utilisateur</string>
+    <string name="button_delete_account" translatable="false">Supprimer mon compte</string>
+    <string name="button_sign_out_account">Logout</string>
+    <string name="info_no_email_found">No adress mail</string>
+    <string name="info_no_username_found" translatable="false">Aucun nom d\'utilisateur</string>
+    <string name="popup_message_confirmation_delete_account" translatable="false">Es-tu sûr(e) de vouloir supprimer ton compte ?</string>
+    <string name="popup_message_choice_yes">Yes !</string>
+    <string name="popup_message_choice_no">No !</string>
+    <string name="appSentence">Find a nice restaurant and invite your co-workers for lunch!</string>
+    <string name="notification" translatable="false">Notification</string>
+
+
+    <!-- Settings Fragment-->
+    <string name="fragment_settings_title">Settings</string>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+    <string name="main_activity_restaurants_sort_name_asc" translatable="false"><![CDATA[Sort A -> Z]]></string>
+    <string name="main_activity_restaurants_sort_name_desc" translatable="false"><![CDATA[Sort Z -> A]]></string>
+    <string name="main_activity_restaurants_sort_rating_desc">Sort by Rating</string>
+    <string name="main_activity_restaurants_sort_workmates_desc">Sort by Workmates</string>
+    <string name="main_activity_restaurants_sort_distance_asc">Sort by Distance</string>
+    <string name="main_activity_restaurants_no_workmates_to_sort_toast">No workmates ave choosen a restaurant yet</string>
+    <string name="menu_main_activity_clear">Clear</string>
+    <string name="restaurant_list_no_restaurants_location_denied">Please accept to share your position to obtrain the available restaurant list near you</string>
+    <string name="restaurant_list_no_restaurants_to_show">No restaurant to shox</string>
+    <!--     Restaurant Fragment-->
+    <string name="text_restaurant_first_line">Restaurant Name</string>
+    <string name="text_restaurant_second_line">restaurant_type_and_address</string>
+    <string name="text_third_line" translatable="false">restaurant_hours</string>
+    <string name="restaurant_distance">restaurant distance</string>
+    <string name="restaurant_text_number_workmates">workmates number</string>
+    <string name="restaurant_rating">restaurant_rating</string>
+    <string name="restaurant_picture">restaurant_picture</string>
+    <string name="text_workmate">text_workmate_name</string>
+    <string name="workmate_picture">workmate_picture</string>
+    <string name="item_restaurant_no_picture_no_text" translatable="false">No Pic</string>
+    <string name="details_phone" translatable="false">Tel :</string>
+    <string name="autoCompleteTextView_noresult">No results found</string>
+
+
+    <string name="your_lunch">YOUR LUNCH</string>
+    <string name="settings">SETTINGS</string>
+    <string name="logout">LOGOUT</string>
+
+    <string name="action_settings" translatable="false">ACTION settings</string>
+    <string name="account_name" translatable="false">Account Name</string>
+    <string name="account_mail" translatable="false">Account Mail</string>
+    <string name="activity_main_drawer_logo_description" translatable="false">logo drawer description</string>
+    <string name="error_unknown_error" translatable="false">errror dans userHelper.getUser</string>
+    <string name="signin_no_connection_text" translatable="false">No connection available</string>
+    <string name="signin_no_connection_image_description" translatable="false">image no description</string>
+    <string name="bg_portraitBackgroundDescription" translatable="false">Background_image</string>
+    <string name="logoTextDescription" translatable="false">logo description</string>
+    <string name="info_no_userMail_found" translatable="false">user mail not found</string>
+    <string name="info_no_userPicture" translatable="false">Picture not found</string>
+    <string name="info_no_userChoosenRestaurantId" translatable="false">Restaurant not choosen yet</string>
+    <string name="info_no_userChoosenRestaurantName" translatable="false">pas de restaurant déjà choisi pour ce midi</string>
+    <string name="menu_YourLunch">Your Lunch</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_main_activity_search" translatable="false">Menu setting</string>
+    <string name="fragment_setting" translatable="false">Fragment Setting</string>
+    <string name="Fragment_logout" translatable="false">Fragment Logout</string>
+    <!--    AlertDialog-->
+    <string name="alertdialog_extendradius_message">No restaurant at %1$dm from your location. Extend the research by 1km?</string>
+    <string name="alertdialog_extendradius_title">Extend the research radius?</string>
+    <string name="YES">YES</string>
+    <string name="NO">NO</string>
+    <string name="radius" translatable="false">Default radius</string>
+    <string name="save" translatable="false">Save</string>
+
+    <string name="notification_lunch_title">Your lunch for today!</string>
+    <string name="notification_no_lunch_chosen">Unfortunately, you did not chose a restaurant today!</string>
+    <string name="notification_lunch_alone">" You chose the restaurant: %1$s.\nlocated at %2$s\nUnfortunately, you will eat alone…"</string>
+    <string name="notification_lunch_with_one_workmate">You chose the restaurant: %1$s \nlocated at %2$s \nYou will lunch with one workmate: %3$s.</string>
+    <string name="notification_lunch_with_few_workmate" tools:ignore="PluralsCandidate">You chose the restaurant: %1$s \n located at %2$s.\n You will lunch with %3$d workmates: %4$s.</string>
+    <string name="notification_workmatesstring_builder_and">" and "</string>
+
+    <string name="channel_name" translatable="false">notifications_chanel_name</string>
+    <string name="channel_description" translatable="false">notifications_channel_description</string>
+    <string name="notifications_no_internet_connection">Please connect to the network to know the details of your lunch.</string>
+    <string name="notifications_firebase_failure">Please tap the notification to see further details about your today lunch.</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <!-- Details Fragment-->
+    <string name="restaurant_details_phone_call" translatable="false">CALL</string>
+
+    <string name="workmates_list_no_workmates_to_show">No workmates.</string>
+    <string name="no_phone_number">No phone number</string>
+    <string name="no_website">No website</string>
+    <string name="restaurant_details_like" translatable="false">LIKE</string>
+    <string name="restaurant_details_unlike" translatable="false">UNLIKE</string>
+    <string name="restaurant_details_website">WEBSITE</string>
+    <string name="fragment_settings_radius_search" translatable="false" tools:ignore="PluralsCandidate">Radius search: %1$d meters</string>
+    <string name="no_picture">No picture</string>
+    <string name="item_workmates_restaurant_text_null">has\'nt decided yet.</string>
+    <string name="restaurant_Chosen" translatable="false">You chose the restaurant %1$s.</string>
+    <string name="details_fragment_alertdialog_restaurant_choice_change_message">Do you want to cancel your previous restaurant choice for the %1$s restaurant ?</string>
+    <string name="details_fragment_alertdialog_restaurant_choice_change_title">Change your restaurant choice ?</string>
+    <string name="details_fragment_alertdialog_restaurant_choice_cancellation_message">Do you want to cancel this restaurant choice ?</string>
+    <string name="item_workmates_restaurant_text">is joining the restaurant: \n  %1$s.</string>
+    <string name="details_fragment_alertdialog_restaurant_choice_cancellation_title" tools:ignore="MissingTranslation">Cancel this restaurant choice?</string>
+    <string name="item_restaurant_no_opening_hours" type="id">No opening hours available</string>
+    <string name="item_workmates_restaurant_text_detailsFragment">is joining !</string>
+    <string name="restaurant_details_picture_description" translatable="false">restaurant_details_picture</string>
+    <string name="restaurant_details_star1_description" translatable="false">restaurant_details_star1</string>
+    <string name="restaurant_details_star2_description" translatable="false">restaurant_details_star2</string>
+    <string name="restaurant_details_star3_description" translatable="false">restaurant_details_star3</string>
+    <string name="fragment_restaurant_details_button_restaurant_choice_description" translatable="false">fragment_restaurant_details_button_restaurant_choice</string>
+    <string name="fragment_restaurant_details_button_backpress_description" translatable="false">fragment_restaurant_details_button_backpress</string>
+    <string name="item_statut_open">OPEN</string>
+    <string name="item_statut_close">CLOSE</string>
+    <string name="title_settings" translatable="false">Settings</string>
+    <string name="permissions_not_granted" translatable="false">Permission not granted</string>
+    <string name="fragment_settings_backpress_description" translatable="false">backpress description</string>
+    <string name="fragment_settings_update_notifications_text" translatable="false">update notification</string>
+    <string name="notification_no_choice">No choice made</string>
+    <string name="item_workmates_joigning_text">is joigning</string>
+
+</resources>

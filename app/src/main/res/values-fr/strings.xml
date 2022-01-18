@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appName">Go4Lunch</string>
+    <string name="restaurant_picture" translatable="false">"Photo du restaurant  "</string>
+    <string name="text_workmate" translatable="false">Nom du collegue</string>
+    <string name="main_activity_restaurants_sort_rating_desc">Tri par note</string>
+    <string name="main_activity_restaurants_sort_workmates_desc">Tri par nombre de collègues</string>
+    <string name="settings">PARAMETRES</string>
+    <string name="your_lunch">VOTRE DEJEUNER</string>
+    <string name="logout">DECONNEXION</string>
+    <string name="menu_logout">Deconnexion</string>
+    <string name="title_mapview">Vue Map</string>
+    <string name="title_listview">Vue Liste</string>
+    <string name="title_workmates">Collègues disponibles</string>
+    <string name="menu_YourLunch">Votre déjeuner</string>
+    <string name="menu_settings">Paramètres</string>
+    <string name="restaurant_details_website">SITE WEB</string>
+    <string name="item_workmates_restaurant_text_detailsFragment">vient</string>
+    <string name="item_restaurant_no_opening_hours">Horaires d\'ouverture indisponibles</string>
+    <string name="details_fragment_alertdialog_restaurant_choice_change_title">Voulez vous changer votre choix ?</string>
+    <string name="details_fragment_alertdialog_restaurant_choice_cancellation_message">Voulez vous annuler votre choix</string>
+    <string name="item_workmates_restaurant_text">vient à ce restaurant</string>
+    <string name="details_fragment_alertdialog_restaurant_choice_cancellation_title">Annuler le choix de restaurant</string>
+    <string name="item_statut_open">OUVERT</string>
+    <string name="item_statut_close">FERME</string>
+    <string name="details_fragment_alertdialog_restaurant_choice_change_message">Voulez vous annuler votre choix précédent de restaurant ?</string>
+    <string name="workmates_list_no_workmates_to_show">Pas de collègues</string>
+    <string name="no_phone_number">Pas de numéro de téléphone</string>
+    <string name="no_website">¨Pas de site Web</string>
+    <string name="no_picture">Pas d\'image</string>
+    <string name="item_workmates_restaurant_text_null">N\'a pas encore fait de choix</string>
+    <string name="input_your_place" translatable="false">Chercher un resrtaurant</string>
+    <string name="main_activity_lunch_no_restaurant_chosen" translatable="false">Vous n\'avez pas encore choisi de restaurant</string>
+    <string name="toolbar_title_login_activity">Votre profil</string>
+    <string name="text_input_username">Nom de l\'utilisateur</string>
+    <string name="text_view_email">Adresse Mail</string>
+    <string name="button_sign_out_account" translatable="false">Déconnexion</string>
+    <string name="info_no_email_found" translatable="false">Aucune adresse mail</string>
+    <string name="popup_message_choice_yes">Oui !</string>
+    <string name="popup_message_choice_no">Non !</string>
+    <string name="appSentence" translatable="false">Trouvez un restaurant et invitez vos collègues</string>
+    <string name="fragment_settings_title">Paramètres</string>
+    <string name="navigation_drawer_open">Ouvert</string>
+    <string name="navigation_drawer_close">Fermé</string>
+    <string name="main_activity_restaurants_sort_distance_asc" translatable="false">Tri par distance</string>
+    <string name="main_activity_restaurants_no_workmates_to_sort_toast" translatable="false">Aucun collègue n\'a choisi son restaurant pour le moment</string>
+    <string name="menu_main_activity_clear">RAZ</string>
+    <string name="restaurant_list_no_restaurants_location_denied" translatable="false">SVP Acceptez de partager votre position pour visualiser les restaurants à proximité</string>
+    <string name="restaurant_list_no_restaurants_to_show" translatable="false">Pas de restaurant à afficher</string>
+    <string name="text_restaurant_first_line" translatable="false">Nom du restaurant</string>
+    <string name="text_restaurant_second_line" translatable="false">Adresse et type du restaurant</string>
+    <string name="restaurant_distance">Distance du restaurant</string>
+    <string name="restaurant_text_number_workmates" translatable="false">"Nombre de collègues "</string>
+    <string name="restaurant_rating" translatable="false">Note du restaurant</string>
+    <string name="workmate_picture" translatable="false">Photo du collègue</string>
+    <string name="autoCompleteTextView_noresult">aucun résultat trouvé</string>
+    <string name="alertdialog_extendradius_message" translatable="false">Aucun restaurant dans votre rayon de recherche, veuillez aggrandir le périmètre de recherche</string>
+    <string name="alertdialog_extendradius_title" translatable="false">Etendre le périmètre de recherche</string>
+    <string name="YES">OUI</string>
+    <string name="NO">NON</string>
+    <string name="notification_lunch_title">votre déjeuner aujourd\'hui</string>
+    <string name="notification_no_lunch_chosen" translatable="false">Malheureusement vous n\'avez pas fait de choix aujourd\'hui</string>
+    <string name="notification_lunch_alone" translatable="false">Vous avez choisi le restaurant  %1$s. situé à  %2$s Malheureuysement vous déjeunerez seul</string>
+    <string name="notification_lunch_with_one_workmate" translatable="false">"Vous avrez choisi le restaurant: %1$s "</string>
+    <string name="notification_lunch_with_few_workmate" translatable="false">Vous avez choisi le restaurant: %1$s   situé à %2$s. Vous déjeunerez avec %3$d collègues %4$s.</string>
+    <string name="notification_workmatesstring_builder_and" translatable="false">You wet</string>
+    <string name="notifications_no_internet_connection">SVP connectez vous au réseau</string>
+    <string name="notifications_firebase_failure" translatable="false">Incident technique</string>
+    <string name="notification_no_choice">Aucun choix fait</string>
+    <string name="item_workmates_joigning_text">vient</string>
+</resources>

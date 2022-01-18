@@ -1,0 +1,46 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=54:7E:FD:F6:FC:5F:AC:B9:70:05:72:AE:E1:6B:F4:57:C9:4E:52:C5%3Bcom.example.go4lunch.Activity.fragments
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    com.example.go4lunch.Activity.fragments
+
+    SHA-1 certificate fingerprint:
+    54:7E:FD:F6:FC:5F:AC:B9:70:05:72:AE:E1:6B:F4:57:C9:4E:52:C5
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="GOOGLE_MAPS_KEY" templateMergeStrategy="preserve" translatable="false">AIzaSyCKUM6HOY-Sl9K28mvp_kJVhMbFxUb-Z1Q</string>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=54:7E:FD:F6:FC:5F:AC:B9:70:05:72:AE:E1:6B:F4:57:C9:4E:52:C5%3Bcom.example.go4lunch.Activity.fragments
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    com.example.go4lunch.Activity.fragments
+
+    SHA-1 certificate fingerprint:
+    54:7E:FD:F6:FC:5F:AC:B9:70:05:72:AE:E1:6B:F4:57:C9:4E:52:C5
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" translatable="false">YOUR_KEY_HERE</string>
+</resources>
