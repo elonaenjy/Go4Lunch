@@ -6,7 +6,6 @@ import static com.example.go4lunch.Activity.Main.MainActivity.RADIUS_MAX;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.go4lunch.BuildConfig;
@@ -60,7 +59,7 @@ public class AutoCompleteRepository {
         });
     }
 
-    public LiveData<List<PredictionAPIAutocomplete>> getListAutoComplete() {
+    public MutableLiveData<List<PredictionAPIAutocomplete>> getListAutoComplete() {
         return listenAutoCompletePredictions;
     }
 }

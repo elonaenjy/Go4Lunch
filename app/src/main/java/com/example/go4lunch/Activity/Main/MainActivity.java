@@ -1,9 +1,6 @@
 package com.example.go4lunch.Activity.Main;
 
 import static com.example.go4lunch.Activity.Main.Fragments.Map.MapFragment.PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION;
-import static com.example.go4lunch.Service.AutoCompleteService.getAutocomplete;
-import static com.example.go4lunch.Service.AutoCompleteService.listenAutoCompletePredictions;
-import static com.example.go4lunch.Service.AutoCompleteService.predictions;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -29,6 +26,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
@@ -395,20 +393,24 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             }
         });
 
-        listenAutoCompletePredictions.observe(this, this::filterAutocompleteResults);
+        listRestaurantViewModel.getListRestaurantAutoComplete().observe(this, this::filterAutocompleteResults);
 
         autoCompleteTextView.setOnItemClickListener((parent, view, position, id) -> {
             // Handles no results click
-            listRestaurantViewModel.getListRestaurants();
+            MutableLiveData<List<PredictionAPIAutocomplete>> predictions = listRestaurantViewModel.getListRestaurantAutoComplete();
             if (parent.getItemAtPosition(position) == getResources().getString(R.string.autoCompleteTextView_noresult)) {
                 autoCompleteTextView.setText("");
             } else {
                 // Handles click on an autocomplete search dropdown result
                 for (PredictionAPIAutocomplete prediction :
                         Objects.requireNonNull(predictions.getValue())) {
-                        listRestaurantViewModel.getListRestaurantAutoCompletevalue(predictions.getValue());
-                    }
+  //                  listRestaurantViewModel.getListRestaurantAutoCompletevalue(predictions.getValue());
+  //                  Code à revoir. Il faut récupérer le placeId puis récupérer les infos Places, pour le mettre au format ResultAPIDetail
+  //                          et alimenter la lRestaurantLiveData dans le listRestaurantViewModel
+
+
                 }
+            }
         });
     }
 
