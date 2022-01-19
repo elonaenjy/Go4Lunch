@@ -14,6 +14,7 @@ import com.example.go4lunch.Model.map.Location;
 import com.example.go4lunch.Model.map.LocationAPIMap;
 import com.example.go4lunch.Model.map.OpenStatutAPIMap;
 import com.example.go4lunch.Model.map.ResultAPIMap;
+import com.example.go4lunch.Repository.AutoCompleteRepository;
 import com.example.go4lunch.Repository.LocationRepository;
 import com.example.go4lunch.Repository.NearByPlacesRepository;
 import com.example.go4lunch.Repository.UserRepository;
@@ -26,6 +27,7 @@ import java.util.Objects;
 
 public class ListRestaurantViewModel extends ViewModel {
     NearByPlacesRepository nearByPlaces;
+    AutoCompleteRepository autoCompleteRepository;
     public static MutableLiveData<List<ResultAPIMap>> lRestaurantMutableLiveData = new MutableLiveData<>();
     public static MutableLiveData<List<User>> lWorkmatesLiveData = new MutableLiveData<>();
 
@@ -47,11 +49,13 @@ public class ListRestaurantViewModel extends ViewModel {
             @NonNull PermissionChecker permissionChecker,
             @NonNull LocationRepository locationRepository,
             @NonNull NearByPlacesRepository nearByPlaces,
-            @NonNull UserRepository userRepository) {
+            @NonNull UserRepository userRepository,
+            AutoCompleteRepository autoCompleteRepository) {
         this.permissionChecker = permissionChecker;
         this.locationRepository = locationRepository;
         this.nearByPlaces = nearByPlaces;
         this.userRepository = userRepository;
+        this.autoCompleteRepository = autoCompleteRepository;
 
         getLocation();
 
@@ -176,5 +180,9 @@ public class ListRestaurantViewModel extends ViewModel {
 
     public Location getLocationForReinitMap() {
         return locationRepository.getLocationLiveData().getValue();
+    }
+
+    public void getAutocomplete(String toString) {
+
     }
 }

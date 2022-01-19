@@ -379,7 +379,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() > 2) {
-                    getAutocomplete(s.toString());
+                    listRestaurantViewModel.getAutocomplete(s.toString());
                 }
             }
 

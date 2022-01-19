@@ -30,7 +30,7 @@ public class AutoCompleteRepository {
 
     public static final MutableLiveData<List<PredictionAPIAutocomplete>> listenAutoCompletePredictions = new MutableLiveData<>();
 
-    public MutableLiveData<List<PredictionAPIAutocomplete>> getAutocomplete(String input) {
+    public void getAutocomplete(String input) {
         APIRequest apiAutocomplete = APIClient.getClient().create(APIRequest.class);
         Call<PredictionsAPIAutocomplete> autocompleteSearch = apiAutocomplete.getAutocomplete(
                 userLocationStr,
@@ -55,9 +55,9 @@ public class AutoCompleteRepository {
             public void onFailure(@NonNull Call<PredictionsAPIAutocomplete> call,
                                   @NonNull Throwable t) {
                 Log.d(TAG, "getPlace API failure" + t);
+                listenAutoCompletePredictions.setValue(null);
             }
         });
-        return listenAutoCompletePredictions;
     }
 
     public LiveData<List<PredictionAPIAutocomplete>> getListAutoComplete() {

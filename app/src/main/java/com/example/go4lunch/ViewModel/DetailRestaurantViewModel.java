@@ -23,8 +23,6 @@ import com.example.go4lunch.Repository.UserLikingRestaurantRepository;
 import com.example.go4lunch.Repository.UserRepository;
 import com.example.go4lunch.Repository.UserSingletonRepository;
 
-import java.text.FieldPosition;
-import java.text.ParsePosition;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -130,7 +128,7 @@ public class DetailRestaurantViewModel extends ViewModel {
     }
 
     public void initDetailViewMutableLiveData(String placeId) {
-        dRestaurantMutableLiveData = detailRestaurantRepository.getPlaceDetails(placeId);
+        detailRestaurantRepository.getPlaceDetails(placeId);
     }
 
     public void addRestaurantLiked(String placeId) {

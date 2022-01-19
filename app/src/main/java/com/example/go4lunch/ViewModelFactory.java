@@ -6,13 +6,13 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.go4lunch.Repository.AutoCompleteRepository;
 import com.example.go4lunch.Repository.DetailRestaurantRepository;
 import com.example.go4lunch.Repository.SharedPreferencesRepository;
 import com.example.go4lunch.Repository.UserLikingRestaurantRepository;
 import com.example.go4lunch.Repository.LocationRepository;
 import com.example.go4lunch.Repository.NearByPlacesRepository;
 import com.example.go4lunch.Repository.UserRepository;
-import com.example.go4lunch.Repository.UserSingletonRepository;
 import com.example.go4lunch.Service.PermissionChecker;
 import com.example.go4lunch.ViewModel.DetailRestaurantViewModel;
 import com.example.go4lunch.ViewModel.SettingViewModel;
@@ -38,6 +38,7 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
     private final DetailRestaurantRepository detailRestaurantRepository;
     private final UserLikingRestaurantRepository userLikingRestaurantRepository;
     private final SharedPreferencesRepository sharedPreferencesRepository;
+    private final AutoCompleteRepository autoCompleteRepository;
 
     public static ViewModelFactory getInstance() {
         if (sInstance == null) {
@@ -54,8 +55,8 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
                             new UserRepository(),
                             new DetailRestaurantRepository(),
                             new UserLikingRestaurantRepository(),
-                            new SharedPreferencesRepository()
-                    );
+                            new SharedPreferencesRepository(),
+                            new AutoCompleteRepository());
                 }
             }
         }
@@ -70,7 +71,7 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
             @NonNull UserRepository userRepository,
             @NonNull DetailRestaurantRepository detailRestaurantRepository,
             UserLikingRestaurantRepository userLikingRestaurantRepository,
-            SharedPreferencesRepository sharedPreferencesRepository) {
+            SharedPreferencesRepository sharedPreferencesRepository, AutoCompleteRepository autoCompleteRepository) {
         this.permissionChecker = permissionChecker;
         this.locationRepository = locationRepository;
         this.nearByPlacesRepository = nearByPlacesRepository;
@@ -78,6 +79,7 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
         this.detailRestaurantRepository = detailRestaurantRepository;
         this.userLikingRestaurantRepository = userLikingRestaurantRepository;
         this.sharedPreferencesRepository = sharedPreferencesRepository;
+        this.autoCompleteRepository = autoCompleteRepository;
     }
 
     @SuppressWarnings("unchecked")
@@ -89,7 +91,8 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
                     permissionChecker,
                     locationRepository,
                     nearByPlacesRepository,
-                    userRepository
+                    userRepository,
+                    autoCompleteRepository
             );
         } else if (modelClass.isAssignableFrom(WorkmateViewModel.class)) {
             return (T) new WorkmateViewModel(
