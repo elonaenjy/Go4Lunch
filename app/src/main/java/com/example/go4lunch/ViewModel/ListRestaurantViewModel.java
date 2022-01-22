@@ -182,13 +182,19 @@ public class ListRestaurantViewModel extends ViewModel {
 
     public void callPlaces(String placeId) {
         // method to get the place information by the api Place - Format ResultAPIDetail
-        detailRestaurantRepository.getPlaceDetails(placeId);
+        dRestaurant = detailRestaurantRepository.getPlaceDetails(placeId);
+
     }
 
     public LiveData<ArrayList<ResultAPIMap>> getDetailRestaurant() {
         detailRestaurantRepository.getRestaurantDetails();
         return mapDataToResulAPIMap(dRestaurant);
     }
+
+    //LiveData userLiveData = ...; dRestaurant au format ResultApiDetails
+    //LiveData userName = Transformations.map(userLiveData, user -> {
+    //    return user.firstName + " " + user.lastName
+    //});
 
     private LiveData<ArrayList<ResultAPIMap>> mapDataToResulAPIMap(LiveData<ResultAPIDetails> dRestaurant) {
         return Transformations.map(dRestaurant, detailRestaurant -> {

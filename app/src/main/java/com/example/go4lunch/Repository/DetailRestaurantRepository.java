@@ -25,7 +25,7 @@ public class DetailRestaurantRepository {
     // Restaurant Detail from API Place
     public static final MutableLiveData<ResultAPIDetails> placeDetailResults = new MutableLiveData<>();
 
-    public void getPlaceDetails(String placeId) {
+    public MutableLiveData<ResultAPIDetails> getPlaceDetails(String placeId) {
         APIRequest apiDetails = APIClient.getClient().create(APIRequest.class);
         Call<ResultsAPIDetails> placeDetails = apiDetails.getPlaceDetails(
                 placeId,
@@ -52,6 +52,7 @@ public class DetailRestaurantRepository {
                 placeDetailResults.setValue(null);
             }
         });
+        return placeDetailResults;
     }
 
     public MutableLiveData<ResultAPIDetails> getRestaurantDetails() {
