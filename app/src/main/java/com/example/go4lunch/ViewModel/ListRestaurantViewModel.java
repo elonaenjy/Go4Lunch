@@ -173,7 +173,6 @@ public class ListRestaurantViewModel extends ViewModel {
 
     public void getAutocomplete(String placeId) {
         autoCompleteRepository.getAutocomplete(placeId);
-
     }
 
     public MutableLiveData<List<PredictionAPIAutocomplete>> getListRestaurantAutoComplete() {
