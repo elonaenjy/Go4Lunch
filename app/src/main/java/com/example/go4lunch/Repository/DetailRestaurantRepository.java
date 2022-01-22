@@ -21,7 +21,8 @@ public class DetailRestaurantRepository {
     public DetailRestaurantRepository() {
     }
     private static final String TAG = "PlaceDetailsService";
-    private static final String API_MAP_FIELDS = "formatted_address,geometry,photos,place_id,name,rating,opening_hours,website,international_phone_number";
+    private static final String API_MAP_FIELDS = "formatted_address,geometry,photos,vicinity," +
+            "place_id,name,rating,opening_hours,website,international_phone_number";
     // Restaurant Detail from API Place
     public static final MutableLiveData<ResultAPIDetails> placeDetailResults = new MutableLiveData<>();
 

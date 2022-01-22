@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.go4lunch.Model.User;
 import com.example.go4lunch.Model.autocomplete.PredictionAPIAutocomplete;
 import com.example.go4lunch.Model.details.ResultAPIDetails;
+import com.example.go4lunch.Model.map.GeometryAPIMap;
 import com.example.go4lunch.Model.map.Location;
 import com.example.go4lunch.Model.map.LocationAPIMap;
 import com.example.go4lunch.Model.map.OpenStatutAPIMap;
@@ -190,17 +191,25 @@ public class ListRestaurantViewModel extends ViewModel {
         return mapDataToResulAPIMap(dRestaurant);
     }
 
-    //LiveData userLiveData = ...; dRestaurant au format ResultApiDetails
-    //LiveData userName = Transformations.map(userLiveData, user -> {
-    //    return user.firstName + " " + user.lastName
-    //});
-
     private LiveData<ArrayList<ResultAPIMap>> mapDataToResulAPIMap(LiveData<ResultAPIDetails> dRestaurant) {
         return Transformations.map(dRestaurant, detailRestaurant -> {
             ArrayList<ResultAPIMap> lRestauDetail = new ArrayList();
             ResultAPIMap restauDetail = new ResultAPIMap();
+            // define boolean openNow
+            Boolean openNow = detailRestaurant.getOpening_hours().getOpen_now();
+            OpenStatutAPIMap open_Now = new OpenStatutAPIMap();
+            open_Now.setOpen_now(openNow);
+            // define location
+            GeometryAPIMap geometryApiMapRestau = new GeometryAPIMap();
+            geometryApiMapRestau.setLocation(detailRestaurant.getGeometry().getLocation());
+            // alim ResulAPIMap format
             restauDetail.setPlaceId(detailRestaurant.getPlaceId());
             restauDetail.setName(detailRestaurant.getName());
+            restauDetail.setVicinity(detailRestaurant.getVicinity());
+            restauDetail.setRating(detailRestaurant.getRating());
+            restauDetail.setPhotos(detailRestaurant.getPhotos());
+            restauDetail.setOpen_now(open_Now);
+            restauDetail.setGeometry(geometryApiMapRestau);
             lRestauDetail.add(restauDetail);
             lRestaurantMutableLiveData.setValue(lRestauDetail);
             return lRestauDetail;

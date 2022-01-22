@@ -107,4 +107,19 @@ public class ResultAPIMap implements Serializable {
         this.types = types;
     }
 
+    public OpenStatutAPIMap getOpen_now() {
+        return open_now;
+    }
+
+    public void setOpen_now(OpenStatutAPIMap open_now) {
+        this.open_now = open_now;
+    }
+
+    public void setGeometry(GeometryAPIMap geometry) {
+        this.geometry = geometry;
+    }
+
+    public void setPhotos(List<PhotoAttributesAPIMap> photos) {
+        this.photos = photos;
+    }
 }
