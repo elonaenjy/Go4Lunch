@@ -13,6 +13,8 @@ import com.example.go4lunch.Model.map.Location;
 import com.example.go4lunch.Model.map.LocationAPIMap;
 import com.example.go4lunch.Model.map.ResultAPIMap;
 import com.example.go4lunch.Model.map.ResultsAPIMap;
+import com.example.go4lunch.Repository.AutoCompleteRepository;
+import com.example.go4lunch.Repository.DetailRestaurantRepository;
 import com.example.go4lunch.Repository.LocationRepository;
 import com.example.go4lunch.Repository.NearByPlacesRepository;
 import com.example.go4lunch.Repository.UserRepository;
@@ -35,6 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 @RunWith(MockitoJUnitRunner.class)
 public class ListRestaurantViewModelUnitTest {
     @Rule
@@ -45,6 +48,9 @@ public class ListRestaurantViewModelUnitTest {
     private final LocationRepository locationRepository = Mockito.mock(LocationRepository.class);
     private final NearByPlacesRepository nearByPlacesRepository = Mockito.mock(NearByPlacesRepository.class);
     private final UserRepository userRepository = Mockito.mock(UserRepository.class);
+    private final AutoCompleteRepository autoCompleteRepository = Mockito.mock(AutoCompleteRepository.class);
+    private final DetailRestaurantRepository detailRestaurantRepository = Mockito.mock(DetailRestaurantRepository.class);
+
     private final ResultAPIMap mResultAPIMap = Mockito.mock(ResultAPIMap.class);
     private final ResultsAPIMap mResultsAPIMap = Mockito.mock(ResultsAPIMap.class);
     private final Location location = Mockito.mock(Location.class);
@@ -163,7 +169,8 @@ public class ListRestaurantViewModelUnitTest {
     // Test the ViewModel - méthode : initList which initializes the viewStateItem using by the fragments Map & ListView
     public void getInitListStateItem() throws InterruptedException {
         //Before
-        listRestaurantViewModel = new ListRestaurantViewModel(permissionChecker, locationRepository, nearByPlacesRepository, userRepository);
+        listRestaurantViewModel = new ListRestaurantViewModel(permissionChecker, locationRepository, nearByPlacesRepository,
+                                                        userRepository, autoCompleteRepository, detailRestaurantRepository);
         // When
         lRestaurantMutableLiveData.setValue(DataTest.generateListRestaurantAPITest());
         lWorkmatesLiveData.setValue(DataTest.generateCoworkerTest());

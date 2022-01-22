@@ -404,16 +404,24 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 // Handles click on an autocomplete search dropdown result
                 for (PredictionAPIAutocomplete prediction :
                         Objects.requireNonNull(predictions.getValue())) {
-  //                  listRestaurantViewModel.getListRestaurantAutoCompletevalue(predictions.getValue());
-  //                  Code à revoir. Il faut récupérer le placeId puis récupérer les infos Places, pour le mettre au format ResultAPIDetail
-  //                          et alimenter la lRestaurantLiveData dans le listRestaurantViewModel
-
-
+                    if (parent.getItemAtPosition(position) == prediction.getStructured_formatting().getMain_text()) {
+                        String placeId = prediction.getPlace_id();
+                        // this method updates the lRestaurantLiveData used by an observe in each fragment.
+                        // Here we will show only the selected restaurant
+                        alimlRestaurantMutableLiveData(placeId);
+                    }
                 }
             }
         });
     }
 
+    private void alimlRestaurantMutableLiveData(String placeId) {
+        listRestaurantViewModel.callPlaces(placeId);
+        listRestaurantViewModel.getDetailRestaurant().observe(this,
+                changedDetailRestaurant -> {
+                    System.out.println("je passe dans l'observe" + changedDetailRestaurant.get(0).getPlaceId());
+                });
+    }
 
     private void filterAutocompleteResults(List<PredictionAPIAutocomplete> predictionAPIAutocompletes) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getBaseContext(),

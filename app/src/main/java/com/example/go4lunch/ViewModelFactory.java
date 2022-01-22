@@ -71,7 +71,8 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
             @NonNull UserRepository userRepository,
             @NonNull DetailRestaurantRepository detailRestaurantRepository,
             UserLikingRestaurantRepository userLikingRestaurantRepository,
-            SharedPreferencesRepository sharedPreferencesRepository, AutoCompleteRepository autoCompleteRepository) {
+            SharedPreferencesRepository sharedPreferencesRepository,
+            AutoCompleteRepository autoCompleteRepository) {
         this.permissionChecker = permissionChecker;
         this.locationRepository = locationRepository;
         this.nearByPlacesRepository = nearByPlacesRepository;
@@ -92,7 +93,8 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
                     locationRepository,
                     nearByPlacesRepository,
                     userRepository,
-                    autoCompleteRepository
+                    autoCompleteRepository,
+                    detailRestaurantRepository
             );
         } else if (modelClass.isAssignableFrom(WorkmateViewModel.class)) {
             return (T) new WorkmateViewModel(

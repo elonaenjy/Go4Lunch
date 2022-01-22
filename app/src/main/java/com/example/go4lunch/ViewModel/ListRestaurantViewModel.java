@@ -10,11 +10,13 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.go4lunch.Model.User;
 import com.example.go4lunch.Model.autocomplete.PredictionAPIAutocomplete;
+import com.example.go4lunch.Model.details.ResultAPIDetails;
 import com.example.go4lunch.Model.map.Location;
 import com.example.go4lunch.Model.map.LocationAPIMap;
 import com.example.go4lunch.Model.map.OpenStatutAPIMap;
 import com.example.go4lunch.Model.map.ResultAPIMap;
 import com.example.go4lunch.Repository.AutoCompleteRepository;
+import com.example.go4lunch.Repository.DetailRestaurantRepository;
 import com.example.go4lunch.Repository.LocationRepository;
 import com.example.go4lunch.Repository.NearByPlacesRepository;
 import com.example.go4lunch.Repository.UserRepository;
@@ -28,8 +30,10 @@ import java.util.Objects;
 public class ListRestaurantViewModel extends ViewModel {
     NearByPlacesRepository nearByPlaces;
     AutoCompleteRepository autoCompleteRepository;
+    DetailRestaurantRepository detailRestaurantRepository;
     public static MutableLiveData<List<ResultAPIMap>> lRestaurantMutableLiveData = new MutableLiveData<>();
     public static MutableLiveData<List<User>> lWorkmatesLiveData = new MutableLiveData<>();
+    public static MutableLiveData<ResultAPIDetails> dRestaurant = new MutableLiveData<>();
 
     @NonNull
     private MutableLiveData<ArrayList<RestaurantStateItem>> lRestaurantStateItemLiveData = new MutableLiveData<>();
@@ -50,12 +54,14 @@ public class ListRestaurantViewModel extends ViewModel {
             @NonNull LocationRepository locationRepository,
             @NonNull NearByPlacesRepository nearByPlaces,
             @NonNull UserRepository userRepository,
-            AutoCompleteRepository autoCompleteRepository) {
+            AutoCompleteRepository autoCompleteRepository,
+            DetailRestaurantRepository detailRestaurantRepository) {
         this.permissionChecker = permissionChecker;
         this.locationRepository = locationRepository;
         this.nearByPlaces = nearByPlaces;
         this.userRepository = userRepository;
         this.autoCompleteRepository = autoCompleteRepository;
+        this.detailRestaurantRepository = detailRestaurantRepository;
 
         getLocation();
 
@@ -82,11 +88,11 @@ public class ListRestaurantViewModel extends ViewModel {
 
     //Mapping data from remote source to view data
     private LiveData<List<RestaurantStateItem>> mapDataToViewState
-            (LiveData<List<ResultAPIMap>> lRestaurantMutableLiveData, List<User> listWorkmates) {
-        return Transformations.map(lRestaurantMutableLiveData, restaurantMutableLiveData -> {
+    (LiveData<List<ResultAPIMap>> lRestaurantMutableLiveData, List<User> listWorkmates) {
+        return Transformations.map(lRestaurantMutableLiveData, restaurant -> {
             ArrayList<RestaurantStateItem> listRestaurantStateItems = new ArrayList<>();
             lRestaurantStateItemLiveData = new MutableLiveData<>();
-            for (ResultAPIMap result : restaurantMutableLiveData) {
+            for (ResultAPIMap result : restaurant) {
                 listRestaurantStateItems.add(new RestaurantStateItem(
                         result.getPlaceId(),
                         result.getName().toLowerCase(),
@@ -104,7 +110,7 @@ public class ListRestaurantViewModel extends ViewModel {
     }
 
     public LiveData<List<RestaurantStateItem>> getListRestaurants() {
-        List lWorkmates = userRepository.getAllUsersExceptCurrentUser().getValue();
+        List<User> lWorkmates = userRepository.getAllUsersExceptCurrentUser().getValue();
         return mapDataToViewState(lRestaurantMutableLiveData, lWorkmates);
     }
 
@@ -161,23 +167,6 @@ public class ListRestaurantViewModel extends ViewModel {
         return nbWorkmates;
     }
 
-    public void getListRestaurantAutoCompletevalue(List<PredictionAPIAutocomplete> listRestaurantAutoCompletevalue) {
-        List<ResultAPIMap> lRestaurantNearByPlaces = nearByPlaces.lRestaurants().getValue();
-        ArrayList<ResultAPIMap> lrestaurantAPIForAutoComplete = new ArrayList<>();
-        int sizeListAutoComplete = listRestaurantAutoCompletevalue.size();
-        int position;
-        for (position = 0; position < sizeListAutoComplete; position++) {
-            String placeId = listRestaurantAutoCompletevalue.get(position).getPlace_id();
-            int position2;
-            for (position2 = 0; position2 < Objects.requireNonNull(lRestaurantNearByPlaces).size(); position2++) {
-                if (lRestaurantNearByPlaces.get(position2).getPlaceId().equals(placeId)) {
-                    lrestaurantAPIForAutoComplete.add(lRestaurantNearByPlaces.get(position2));
-                }
-            }
-        }
-        lRestaurantMutableLiveData.setValue(lrestaurantAPIForAutoComplete);
-    }
-
     public Location getLocationForReinitMap() {
         return locationRepository.getLocationLiveData().getValue();
     }
@@ -190,4 +179,28 @@ public class ListRestaurantViewModel extends ViewModel {
     public MutableLiveData<List<PredictionAPIAutocomplete>> getListRestaurantAutoComplete() {
         return autoCompleteRepository.getListAutoComplete();
     }
+
+    public void callPlaces(String placeId) {
+        // method to get the place information by the api Place - Format ResultAPIDetail
+        detailRestaurantRepository.getPlaceDetails(placeId);
+    }
+
+    public LiveData<ArrayList<ResultAPIMap>> getDetailRestaurant() {
+        detailRestaurantRepository.getRestaurantDetails();
+        return mapDataToResulAPIMap(dRestaurant);
+    }
+
+    private LiveData<ArrayList<ResultAPIMap>> mapDataToResulAPIMap(LiveData<ResultAPIDetails> dRestaurant) {
+        return Transformations.map(dRestaurant, detailRestaurant -> {
+            ArrayList<ResultAPIMap> lRestauDetail = new ArrayList();
+            ResultAPIMap restauDetail = new ResultAPIMap();
+            restauDetail.setPlaceId(detailRestaurant.getPlaceId());
+            restauDetail.setName(detailRestaurant.getName());
+            lRestauDetail.add(restauDetail);
+            lRestaurantMutableLiveData.setValue(lRestauDetail);
+            return lRestauDetail;
+        });
+    }
+
 }
+
