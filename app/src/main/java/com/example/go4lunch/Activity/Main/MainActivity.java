@@ -427,8 +427,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         listRestaurantViewModel.callPlaces(placeId);
         listRestaurantViewModel.getDetailRestaurant().observe(this,
                 changedDetailRestaurant -> {
-                    System.out.println("je passe dans l'observe" + changedDetailRestaurant.get(0).getPlaceId());
-                });
+                     });
     }
 
     private void filterAutocompleteResults(List<PredictionAPIAutocomplete> predictionAPIAutocompletes) {

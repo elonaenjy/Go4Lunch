@@ -59,6 +59,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
     public MapFragment() {
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +85,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
         return view;
     }
+
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         menu.setGroupVisible(R.id.main_activity_restaurants_group_sort, false);
@@ -119,8 +121,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 userLocationNew -> {
                     if (userLocationNew != null) {
                         userLatLng = new LatLng(userLocationNew.getLat(), userLocationNew.getLng());
-//                        if (userLocationOld == null || (userLocationNew.distanceTo(userLocationOld) >= LOCATION_CHANGE_THRESHOLD)) {
-                            if (userLocationOld == null) {
+                        if (userLocationOld == null || (
+                                listRestaurantViewModel.distance(userLocationNew, userLocationOld)) >= LOCATION_CHANGE_THRESHOLD)
+                        {
                             userLocationOld = userLocationNew;
                             userLocationStr = userLocationNew.getLat() + "," + userLocationNew.getLng();
                             listRestaurantViewModel.initListViewMutableLiveData(userLocationStr);
@@ -141,6 +144,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         // Handle click on marker info
         mMapSetUpClickListener();
     }
+
     private void getBaseList() {
         listRestaurantViewModel.getListRestaurants().observe(requireActivity(),
                 changedListRestaurantsStateItem -> {
@@ -281,7 +285,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     public void onStop() {
         super.onStop();
     }
-
 
 
 }

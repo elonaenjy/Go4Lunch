@@ -148,6 +148,9 @@ public class ListRestaurantViewModel extends ViewModel {
         return distance;
     }
 
+    public Double distance(Location oldLocation, Location newLocation) {
+        return Location.computeDistance(oldLocation, newLocation);
+    }
     private Boolean defineStatut(OpenStatutAPIMap openingNow) {
         Boolean statut;
         if (openingNow != null) {
