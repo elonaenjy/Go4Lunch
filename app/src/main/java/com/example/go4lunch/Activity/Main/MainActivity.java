@@ -108,7 +108,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_activity_menu, menu);
         clearButton = menu.findItem(R.id.main_activity_menu_clear);
-        clearButton.setVisible(false);
+        System.out.println("texte :" + autoCompleteTextView.getText()+"fintexte");
+        if (autoCompleteTextView.getText().equals(null)) {
+            clearButton.setVisible(false);
+        } else {
+            clearButton.setVisible(true);
+        }
         return true;
     }
 
@@ -345,6 +350,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             // Autocomplete clear
             case main_activity_menu_clear:
                 autoCompleteTextView.setText("");
+                hideAutocompleteItem();
                 reinitMap();
                 return true;
             default:
@@ -356,17 +362,23 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private void reinitMap() {
         Location userLocation = (listRestaurantViewModel.getLocationForReinitMap());
         String userLocationStr = userLocation.getLat() + "," + userLocation.getLng();
+
         listRestaurantViewModel.initListViewMutableLiveData(userLocationStr);
     }
 
     private void showOrHideAutocompleteItem() {
         if (autoCompleteTextView.getVisibility() == View.VISIBLE) {
             autoCompleteTextView.setVisibility(View.GONE);
+            clearButton.setVisible(false);
         } else {
             autoCompleteTextView.setVisibility(View.VISIBLE);
+            clearButton.setVisible(true);
         }
     }
-
+    private void hideAutocompleteItem() {
+        clearButton.setVisible(false);
+        autoCompleteTextView.setVisibility(View.GONE);
+    };
     private void autoCompleteTextListener() {
         // call APIAutocomplete when typing in search
         autoCompleteTextView.addTextChangedListener(new TextWatcher() {
@@ -389,6 +401,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 } else {
                     clearButton.setVisible(false);
                     findViewById(R.id.main_activity_menu_search).setVisibility(View.VISIBLE);
+                    reinitMap();
                 }
             }
         });

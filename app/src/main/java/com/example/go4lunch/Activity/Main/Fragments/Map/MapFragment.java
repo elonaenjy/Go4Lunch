@@ -50,6 +50,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     public static Location userLocationOld;
     public static LatLng userLatLng;
     public static String userLocationStr;
+    public LatLng restauLatLng;
+    public LatLng mapLatLng;
 
     private GoogleMap mMap;
 
@@ -149,6 +151,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                         } else {
                             addMarkerResult(changedListRestaurantsStateItem);
                             if (mMap != null && userLatLng != null) {
+                                if (changedListRestaurantsStateItem.size() == 1) {
+                                    mapLatLng = restauLatLng;
+                                } else {
+                                    mapLatLng = userLatLng;
+                                }
+
                                 MapFragment.this.zoomOnCurrentPosition(mMap);
                             }
                         }
@@ -159,7 +167,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     }
 
     private void zoomOnCurrentPosition(GoogleMap mMap) {
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, INITIAL_ZOOM));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mapLatLng, INITIAL_ZOOM));
     }
 
     // Handle click on marker info
@@ -203,7 +211,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             } else {
                 markerRestaurant = showRegularRestaurantMarker(result);
             }
-            markerRestaurant.setTag(result.getPlaceId());
+            restauLatLng = new LatLng(result.getRestaurantLocation().getLat(), result.getRestaurantLocation().getLng());
         }
     }
 
