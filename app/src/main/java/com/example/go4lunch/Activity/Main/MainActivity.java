@@ -108,12 +108,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_activity_menu, menu);
         clearButton = menu.findItem(R.id.main_activity_menu_clear);
-        System.out.println("texte :" + autoCompleteTextView.getText()+"fintexte");
-        if (autoCompleteTextView.getText().equals(null)) {
-            clearButton.setVisible(false);
-        } else {
-            clearButton.setVisible(true);
-        }
+        clearButton.setVisible(false);
         return true;
     }
 
