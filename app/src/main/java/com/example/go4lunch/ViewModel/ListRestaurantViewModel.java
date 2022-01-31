@@ -111,7 +111,7 @@ public class ListRestaurantViewModel extends ViewModel {
     }
 
     public LiveData<List<RestaurantStateItem>> getListRestaurants() {
-        List<User> lWorkmates = userRepository.getAllUsersExceptCurrentUser().getValue();
+        List<User> lWorkmates = userRepository.initListUser();
         return mapDataToViewState(lRestaurantMutableLiveData, lWorkmates);
     }
 

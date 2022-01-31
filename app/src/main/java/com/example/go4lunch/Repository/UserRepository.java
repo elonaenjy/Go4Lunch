@@ -71,7 +71,7 @@ public class UserRepository {
                 }
             }
         });
-        ArrayList<User> lWorkmatesExceptCurrentUser = new ArrayList<>();
+        ArrayList<User> lWorkmatesExceptCurrentUser;
         lWorkmatesExceptCurrentUser = suppressCurrentUser(allWorkmates);
         listWorkmateExceptCurrentUser.setValue(lWorkmatesExceptCurrentUser);
         return listWorkmateExceptCurrentUser;
@@ -97,14 +97,14 @@ public class UserRepository {
         mUsersRef.addSnapshotListener((queryDocumentSnapshots, error) -> {
             if (queryDocumentSnapshots == null) {
             } else {
-                List<DocumentSnapshot> documents = new ArrayList<>();
+//                List<DocumentSnapshot> documents = new ArrayList<>();
                 allWorkmates.clear();
                 for (DocumentSnapshot user : queryDocumentSnapshots.getDocuments()) {
                     allWorkmates.add(user.toObject(User.class));
                 }
             }
         });
-        ArrayList<User> lWorkmatesExceptCurrentUser = new ArrayList<>();
+        ArrayList<User> lWorkmatesExceptCurrentUser;
         lWorkmatesExceptCurrentUser = suppressCurrentUserForARestaurant(allWorkmates, placeId);
         listWorkmateExceptCurrentUser.setValue(lWorkmatesExceptCurrentUser);
         return listWorkmateExceptCurrentUser;
@@ -126,5 +126,24 @@ public class UserRepository {
 
     public User createUserInFirestore() {
             return helperFirestoreUser.createUserInFirestore();
+    }
+
+    public ArrayList<User> initListUser() {
+        listWorkmateExceptCurrentUser = new MutableLiveData<>();
+        mUsersRef.addSnapshotListener((queryDocumentSnapshots, error) -> {
+            if (queryDocumentSnapshots == null) {
+            } else {
+                allWorkmates.clear();
+                for (DocumentSnapshot user : queryDocumentSnapshots.getDocuments()) {
+                    allWorkmates.add(user.toObject(User.class));
+                }
+            }
+        });
+        ArrayList<User> lWorkmatesExceptCurrentUser = suppressCurrentUser(allWorkmates);
+        listWorkmateExceptCurrentUser.setValue(lWorkmatesExceptCurrentUser);
+
+        return lWorkmatesExceptCurrentUser;
+
+
     }
 }
