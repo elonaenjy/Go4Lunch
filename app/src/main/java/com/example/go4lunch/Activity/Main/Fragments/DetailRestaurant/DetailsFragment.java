@@ -285,9 +285,11 @@ public class DetailsFragment extends Fragment {
         AlertDialog dialogRestaurantChosen = builder.create();
 
         dialogRestaurantChosen.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.YES),
-                (dialog1, which) -> saveRestaurantChoice(detailRestaurantStateItem.getPlaceId(), detailRestaurantStateItem.getName(),
-                        detailRestaurantStateItem.getFormatted_address()));
-
+                (dialog1, which) -> {
+                    saveRestaurantChoice(detailRestaurantStateItem.getPlaceId(), detailRestaurantStateItem.getName(),
+                            detailRestaurantStateItem.getFormatted_address());
+                    buttonRestaurantChoice.setImageResource(R.drawable.ic_baseline_check_circle_30);
+                });
         dialogRestaurantChosen.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.NO), (dialog12, which) -> dialog12.dismiss());
 
         dialogRestaurantChosen.show();

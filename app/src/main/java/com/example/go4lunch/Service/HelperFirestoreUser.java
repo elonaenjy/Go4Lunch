@@ -3,7 +3,6 @@ package com.example.go4lunch.Service;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.example.go4lunch.Model.User;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,14 +29,6 @@ public final class HelperFirestoreUser implements OnSuccessListener<DocumentSnap
     public static CollectionReference getUsersCollection() {
         return FirebaseFirestore.getInstance().collection(COLLECTION_NAME);
     }
-
-
-    @Nullable
-    public String getCurrentUserUID() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        return (user != null) ? user.getUid() : null;
-    }
-
 
     public Task<QuerySnapshot> getAllUsers() {
         return getUsersCollection().get();

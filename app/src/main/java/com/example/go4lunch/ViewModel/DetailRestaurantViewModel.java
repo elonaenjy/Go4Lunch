@@ -33,9 +33,6 @@ public class DetailRestaurantViewModel extends ViewModel {
     private UserRepository userRepository;
     private final MediatorLiveData<DetailRestaurantStateItem> mMediatorLiveData = new MediatorLiveData<>();
 
-//    @NonNull
-//    private MutableLiveData<ResultAPIDetails> dRestaurantMutableLiveData = new MutableLiveData<>();
-
     public DetailRestaurantViewModel(
             DetailRestaurantRepository detailRestaurantRepository,
             UserRepository userRepository,
