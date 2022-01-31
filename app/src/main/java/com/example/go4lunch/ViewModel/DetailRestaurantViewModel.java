@@ -10,7 +10,6 @@ import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.example.go4lunch.Model.RestaurantChoice;
@@ -34,8 +33,8 @@ public class DetailRestaurantViewModel extends ViewModel {
     private UserRepository userRepository;
     private final MediatorLiveData<DetailRestaurantStateItem> mMediatorLiveData = new MediatorLiveData<>();
 
-    @NonNull
-    private static MutableLiveData<ResultAPIDetails> dRestaurantMutableLiveData = new MutableLiveData<>();
+//    @NonNull
+//    private MutableLiveData<ResultAPIDetails> dRestaurantMutableLiveData = new MutableLiveData<>();
 
     public DetailRestaurantViewModel(
             DetailRestaurantRepository detailRestaurantRepository,
@@ -49,34 +48,17 @@ public class DetailRestaurantViewModel extends ViewModel {
         LiveData<List<RestaurantLiked>> usersLikingRestaurant = userLikingRestaurantRepository.getUsersLikingRestaurant();
         MutableLiveData<ArrayList<User>> currentUserLiveData = userRepository.getFirestoreUser();
 
-        mMediatorLiveData.addSource(restaurantDetails, new Observer<ResultAPIDetails>() {
-            @Override
-            public void onChanged(ResultAPIDetails restaurantDetails) {
-                combine(restaurantDetails,
-                        usersLikingRestaurant.getValue(),
-                        currentUserLiveData.getValue());
+        mMediatorLiveData.addSource(restaurantDetails, restaurantDetails1 -> combine(restaurantDetails1,
+                usersLikingRestaurant.getValue(),
+                currentUserLiveData.getValue()));
 
-            }
-        });
+        mMediatorLiveData.addSource(currentUserLiveData, currentUserLiveData1 -> combine(restaurantDetails.getValue(),
+                usersLikingRestaurant.getValue(),
+                currentUserLiveData1));
 
-        mMediatorLiveData.addSource(currentUserLiveData, new Observer<ArrayList<User>>() {
-            @Override
-            public void onChanged(ArrayList<User> currentUserLiveData) {
-                combine(restaurantDetails.getValue(),
-                        usersLikingRestaurant.getValue(),
-                        currentUserLiveData);
-            }
-        });
-
-        mMediatorLiveData.addSource(usersLikingRestaurant, new Observer<List<RestaurantLiked>>() {
-            @Override
-            public void onChanged(List<RestaurantLiked> restaurantLiked) {
-                combine(restaurantDetails.getValue(),
-                        restaurantLiked,
-                        currentUserLiveData.getValue());
-            }
-        });
-
+        mMediatorLiveData.addSource(usersLikingRestaurant, restaurantLiked -> combine(restaurantDetails.getValue(),
+                restaurantLiked,
+                currentUserLiveData.getValue()));
     }
 
     private void combine(@NonNull ResultAPIDetails restaurantDetail,
@@ -162,7 +144,6 @@ public class DetailRestaurantViewModel extends ViewModel {
         // Second update Singleton
         userSingletonRepository.updateRestaurantChoice(chosenRestaurantId, chosenRestaurantName,
                 chosenRestaurantAdress, formattedDate);
-
 
         // Third update SharedPreferences
         SharedPreferencesRepository sharedPreferencesRepository = new SharedPreferencesRepository();

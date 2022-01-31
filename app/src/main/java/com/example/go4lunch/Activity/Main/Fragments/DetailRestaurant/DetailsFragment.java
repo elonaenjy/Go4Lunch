@@ -137,6 +137,9 @@ public class DetailsFragment extends Fragment {
                             .fitCenter())
                     .into(restaurantPicture);
             restaurantPicture.setVisibility(View.VISIBLE);
+            TextView noPhoto = view.findViewById(R.id.restaurant_details_no_picture_text);
+            noPhoto.setText("");
+            noPhoto.setVisibility(View.GONE);
         }
     }
 

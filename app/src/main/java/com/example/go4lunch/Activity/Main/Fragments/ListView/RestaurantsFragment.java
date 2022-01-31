@@ -177,7 +177,6 @@ public class RestaurantsFragment extends Fragment {
         if (results == null || results.isEmpty()) {
             noRestaurantsToShow();
         } else {
-  //          Location userLocation = listRestaurantViewModel.getGpsMessageLiveData().getValue();
             recyclerView.setAdapter(new RestaurantsAdapter(results, this.getActivity()));
         }
         progressBar.setVisibility(View.GONE);

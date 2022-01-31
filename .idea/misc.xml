@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/33638/AndroidStudioProjects/Go4Lunch/app/src/main/res/layout/fragment_map.xml" value="0.15307971014492755" />
+        <entry key="..\:/Users/33638/AndroidStudioProjects/Go4Lunch/app/src/main/res/layout/navbar.xml" value="0.15307971014492755" />
+        <entry key="..\:/Users/33638/AndroidStudioProjects/Go4Lunch/app/src/main/res/layout/toolbar.xml" value="0.15307971014492755" />
+        <entry key="..\:/Users/33638/AndroidStudioProjects/Go4Lunch/app/src/main/res/menu/main_activity_menu.xml" value="0.26875" />
+        <entry key="..\:/Users/33638/AndroidStudioProjects/Go4Lunch/app/src/main/res/menu/nav_menu.xml" value="0.2546875" />
         <entry key="..\:/Users/33638/StudioProjects/Go4Lunch/app/src/main/res/layout/fragment_restaurant_details.xml" value="0.13958333333333334" />
       </map>
     </option>
