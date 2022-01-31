@@ -75,8 +75,6 @@ public class ListRestaurantViewModelUnitTest {
     public void setUp() {
         //Mock result for nearby search
         List<ResultAPIMap> listOfNearbyResult = new ArrayList<>();
-//        listOfNearbyResult.add(mResultAPIMap);
- //       lRestaurantLiveDataTest.setValue(DataTest.generateListRestaurantAPITest());
 
     }
 
@@ -155,8 +153,6 @@ public class ListRestaurantViewModelUnitTest {
         userLocationLiveDataTest.setValue(DataTest.generateCurrentPositionTest());
 
         //When
-//        Mockito.when(location.getLat()).thenReturn(2.3842167);
-//        Mockito.when(location.getLng()).thenReturn(48.5244883);
         Mockito.when(locationRepository.getLocationLiveData()).thenReturn(userLocationLiveDataTest);
         Location userLocation = LiveDataTestUtils.getOrAwaitValue(locationRepository.getLocationLiveData());
 

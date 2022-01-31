@@ -97,7 +97,6 @@ public class UserRepository {
         mUsersRef.addSnapshotListener((queryDocumentSnapshots, error) -> {
             if (queryDocumentSnapshots == null) {
             } else {
-//                List<DocumentSnapshot> documents = new ArrayList<>();
                 allWorkmates.clear();
                 for (DocumentSnapshot user : queryDocumentSnapshots.getDocuments()) {
                     allWorkmates.add(user.toObject(User.class));
@@ -128,22 +127,4 @@ public class UserRepository {
             return helperFirestoreUser.createUserInFirestore();
     }
 
-    public ArrayList<User> initListUser() {
-        listWorkmateExceptCurrentUser = new MutableLiveData<>();
-        mUsersRef.addSnapshotListener((queryDocumentSnapshots, error) -> {
-            if (queryDocumentSnapshots == null) {
-            } else {
-                allWorkmates.clear();
-                for (DocumentSnapshot user : queryDocumentSnapshots.getDocuments()) {
-                    allWorkmates.add(user.toObject(User.class));
-                }
-            }
-        });
-        ArrayList<User> lWorkmatesExceptCurrentUser = suppressCurrentUser(allWorkmates);
-        listWorkmateExceptCurrentUser.setValue(lWorkmatesExceptCurrentUser);
-
-        return lWorkmatesExceptCurrentUser;
-
-
-    }
 }

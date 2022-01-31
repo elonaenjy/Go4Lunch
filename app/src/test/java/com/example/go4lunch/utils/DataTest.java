@@ -20,34 +20,8 @@ public class DataTest {
     private static final String sRestaurantAddressTest = "Restaurant address test";
     private static final boolean sRestaurantOpeningTest = true;
     private static final double sRestaurantRatingTest = 3;
-    private static final String sPlaceIdTest = "123456789azertyuiop";
     private static final String sPhoneNumberTest = "0123456789";
     private static final String sRestaurantWebsiteTest = "www.restaurant.com";
-
-    public static User generateUserTest() {
-        User user = new User(
-                "Current User Id",
-                "Current User Name",
-                "currentusermail@orange.fr",
-                "https://i.pravatar.cc/150?u=a042581f4e29026704d",
-                "Choosen Restaurant Id",
-                "Choosen Restaurant Name",
-                "Choosen Restaurant Adress",
-                "10/01/2022");
-        return user;
-    }
-
-    public static double generateLatitudeFromNearbySearchTest() {
-        return 46.578361;
-    }
-
-    public static double generateLongitudeFromNearbySearchTest() {
-        return 0.339655;
-    }
-
-    public static String generateRestaurantPlaceIdTest() {
-        return sPlaceIdTest;
-    }
 
     public static Location generateCurrentPositionTest() {
         Location userLocation = new Location();
